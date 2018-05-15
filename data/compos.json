@@ -1,0 +1,19 @@
+[
+    { "name" : "Hard Engage", "characters": "Aatrox, Amumu, Fizz, Miss fortune, Zyra" },
+    { "name" : "Hard Engage", "characters": "Gnar, Jarvan IV, Lissandra, Tristana, Janna" },
+    { "name" : "Hard Engage", "characters": "Gnar, Jarvan IV, Fizz, Lucian, Soraka" },
+    { "name" : "Hard Engage", "characters": "Gnar, Elise, Ahri, Sivir, Alistar" },
+    { "name" : "Hard Engage", "characters": "Maokai, Gragas, Azir, Sivir, Annie" },
+    { "name" : "Yasuo Knockup", "characters": "Yasuo, Gragas, Orianna, Corki, Alistar" },
+    { "name" : "Split Push", "characters": "Jax, Lee, Syndra, Lucian, Braum" },
+    { "name" : "Split Push", "characters": "Ryze, Nunu, Yasuo, Tristana, Morgana" },
+    { "name" : "Orianna Comp", "characters": "Gragas, Rengar, Orianna, Kog maw, Braum" },
+    { "name" : "Orianna Comp", "characters": "Zac, Jarvan IV, Orianna, Ashe, Lulu" },
+    { "name" : "Protect the ADC", "characters": "Lulu, Lee sin, Kassasin, Kog maw, Nami" },
+    { "name" : "Cloud 9", "characters": "Rumble, Elise, Fizz, Ashe, Zyra" },
+    { "name" : "Cloud 9", "characters": "Shen, Zac, Kassadin, Ashe, Zyra" },
+    { "name" : "SKT classico", "characters": "Jax, Lee sin, Zed, Vayne,Zyra" },
+    { "name" : "Sivir comp", "characters": "Gnar, Elise, Ahri, Sivir, Alistar" },
+    { "name" : "Poke comp", "characters": "Ekko, Gragas, Varus, Corki, Janna" },
+    { "name" : "Global comp", "characters": "Shen, Nocturn, Karthus, Twitch, Sona" }
+]
