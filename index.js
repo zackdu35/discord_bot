@@ -70,13 +70,6 @@ client.on('message', msg => {
                     
                 }
             })
-            msg.channel.send("")
-
-            
-            var substr = msg.content.substring(14);
-            console.log("bien joué")
-        
-            msg.channel.send(substr)
         break;
         case '!lb ingame':
             msg.channel.send("* Composition de team ( tank , ap , ad , depush )\n* Communication Vocale ( si possible) : position du jungle ennemie, décalage des laners, summoner\n* Vision jungle ennemie : pink wards etc \n-Achat d’une pink ward au premier back \n-Garder les entrées de notre jungle wardées \n-Le jungler garde une pink dans le cas où il veut cheese un objectif \n-support toujour le plus de pink pour mieux dé-wardé \n* Aggression en lane : -information du jg ennemie \n-Gank ou counter Gank \n-débilité de l'ennemie\n* Dragon : - Jg ennemie mort ou topside + pression sur les lanes bot et mid \n* Nash   : - Jg ennemie mort ou botside + une partie de l'équipe ennemie morte , Possibilité de Nash plus risqué si la game est mal partie\n* Focus sur l'adc ou squishy feed \n* Pas de call risqué si on est devant \n* finir la game le plus vite possible ( ne pas troll si on est tous feed ) ")
@@ -90,7 +83,7 @@ client.on('message', msg => {
             }
             msg.channel.send(result)
         break;
-        case '!lb compo':
+        case '!lb compos':
             for(var i in compos){
                 result += compos[i].name+' - '+compos[i].characters+'\n';
             }
@@ -104,7 +97,7 @@ client.on('message', msg => {
         break;
         case '!lb ?' :
         case '!lb help' :
-            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compo \n*train \n*help")
+            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compos \n*add compo \n*train \n*help")
         break;       
     }
 });
