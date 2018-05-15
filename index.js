@@ -1,6 +1,12 @@
 const Discord = require("discord.js");
 var compos = require('./data/compos.json');
 var members = require('./data/members.json');
+var http = require("http");
+
+setInterval(function() {
+    http.get("https://lboob-bot.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
 
 const client = new Discord.Client();
 
