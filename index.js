@@ -103,7 +103,7 @@ client.on('message', msg => {
             msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compos \n*add compo \n*train \n*help \n*doc")
         break;
         case '!lb doc' :
-            msg.channel.send('https://docs.google.com/document/d/1NQrMh1Gn-eihEmnhMCrnD2JWolEuIg28sa5_ihHc8lM/edit')
+            msg.channel.send('https://docs.google.com/document/d/',key.google,'/edit')
         break
     }
 });
