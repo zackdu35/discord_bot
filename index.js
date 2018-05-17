@@ -1,12 +1,8 @@
 const Discord = require("discord.js");
+const key = require('./data/key.json');
 var compos = require('./data/compos.json');
 var members = require('./data/members.json');
 var http = require("http");
-
-setInterval(function() {
-    http.get("https://lboob-bot.herokuapp.com");
-}, 300000); // every 5 minutes (300000)
-
 
 const client = new Discord.Client();
 
@@ -29,7 +25,7 @@ client.on('message', msg => {
         break;
         case '!lb add compo':
             msg.channel.send("Quelle est le nom de ta nouvelle compo ? **!name 'nom_de_la_compo'**");
-            const collector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 300000 });
+            const collector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 40000 });
             console.log(collector)
             var name = ""
             var mid = ""
@@ -39,7 +35,7 @@ client.on('message', msg => {
             var jungle = ""
             collector.on('collect', msg => {
                 if (msg.content.includes("!name")) {
-                    name = msg.content.substring(5);
+                    name = msg.content.substring(5).replace(/\s/g, '');
                     msg.channel.send("Quelle est le nom du TOP LANER ? **!top 'nom_du_top'**");
                     collector.on('collect', msg => {
                         if (msg.content.includes("!top")) {
@@ -61,7 +57,7 @@ client.on('message', msg => {
                                                         if (msg.content.includes("!supp")) {
                                                             supp = msg.content.substring(5).trim()
                                                             msg.channel.send("la compo "+ name +" a été enregistrée\n\n[TOP] "+top+"\n[JUNGLE] "+jungle+"\n[MID] "+mid+"\n[ADC] "+adc+"\n[SUPP] "+supp);
-                                                            compos.push({"name" : name, "characters": top+", "+jungle+", "+mid+", "+adc+", "+supp})
+                                                            compos.push({"id" : compos[compos.length-1].id + 1,"name" : name, "characters": top+", "+jungle+", "+mid+", "+adc+", "+supp})
                                                             console.log(compos);
                                                         }
                                                     })
@@ -77,6 +73,7 @@ client.on('message', msg => {
                 }
             })
         break;
+        
         case '!lb ingame':
             msg.channel.send("* Composition de team ( tank , ap , ad , depush )\n* Communication Vocale ( si possible) : position du jungle ennemie, décalage des laners, summoner\n* Vision jungle ennemie : pink wards etc \n-Achat d’une pink ward au premier back \n-Garder les entrées de notre jungle wardées \n-Le jungler garde une pink dans le cas où il veut cheese un objectif \n-support toujour le plus de pink pour mieux dé-wardé \n* Aggression en lane : -information du jg ennemie \n-Gank ou counter Gank \n-débilité de l'ennemie\n* Dragon : - Jg ennemie mort ou topside + pression sur les lanes bot et mid \n* Nash   : - Jg ennemie mort ou botside + une partie de l'équipe ennemie morte , Possibilité de Nash plus risqué si la game est mal partie\n* Focus sur l'adc ou squishy feed \n* Pas de call risqué si on est devant \n* finir la game le plus vite possible ( ne pas troll si on est tous feed ) ")
         break;
@@ -91,7 +88,7 @@ client.on('message', msg => {
         break;
         case '!lb compos':
             for(var i in compos){
-                result += compos[i].name+' - '+compos[i].characters+'\n';
+                result += '**#'+compos[i].id+'** '+compos[i].name+' - '+compos[i].characters+'\n';
             }
             msg.channel.send(result)
         break;
@@ -103,26 +100,16 @@ client.on('message', msg => {
         break;
         case '!lb ?' :
         case '!lb help' :
-            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compos \n*add compo \n*train \n*help")
-        break;       
+            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compos \n*add compo \n*train \n*help \n*doc")
+        break;
+        case '!lb doc' :
+            msg.channel.send('https://docs.google.com/document/d/1NQrMh1Gn-eihEmnhMCrnD2JWolEuIg28sa5_ihHc8lM/edit')
+        break
     }
 });
 
-client.login('NDQ1ODUzMDUzMjcxNDA4NjYw.DdxIIA.6b_4PT-PFwUcZey_VLsOdy6-Cog');
+client.login(key.value);
 
 
-function loadJSON(path,callback) {   
-
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'path', true); 
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-          }
-    };
-    xobj.send(null);  
- }
 
 
-    
