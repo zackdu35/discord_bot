@@ -4,11 +4,11 @@ Bot for league of legends players
 
 >Members : 
 
-* Zimitip - (Top)
-* Jujudukiki - (Jungle)
-* Zackdu35 - (Mid)
-* TeddyBear1907 - (Adc)
-* Narvalou - (Supp)
+* **Top**      :    Zimitim
+* **Jungle**   :    Jujudukiki 
+* **Mid**      :    Zackdu35
+* **Adc**      :    TeddyBear1907
+* **Supp**     :    Narvalou
 
 >Features : 
 
