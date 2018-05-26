@@ -1,23 +1,4 @@
 [
-    { "id" : 1, "name" : "Hard Engage", "characters": "Aatrox, Amumu, Fizz, Miss fortune, Zyra" },
-    { "id" : 2, "name" : "Hard Engage", "characters": "Gnar, Jarvan IV, Lissandra, Tristana, Janna" },
-    { "id" : 3, "name" : "Hard Engage", "characters": "Gnar, Jarvan IV, Fizz, Lucian, Soraka" },
-    { "id" : 4, "name" : "Hard Engage", "characters": "Gnar, Elise, Ahri, Sivir, Alistar" },
-    { "id" : 5, "name" : "Hard Engage", "characters": "Maokai, Gragas, Azir, Sivir, Annie" },
-    { "id" : 6, "name" : "Yasuo Knockup", "characters": "Yasuo, Gragas, Orianna, Corki, Alistar" },
-    { "id" : 7, "name" : "Split Push", "characters": "Jax, Lee, Syndra, Lucian, Braum" },
-    { "id" : 8, "name" : "Split Push", "characters": "Ryze, Nunu, Yasuo, Tristana, Morgana" },
-    { "id" : 9, "name" : "Orianna Comp", "characters": "Gragas, Rengar, Orianna, Kog maw, Braum" },
-    { "id" : 10, "name" : "Orianna Comp", "characters": "Zac, Jarvan IV, Orianna, Ashe, Lulu" },
-    { "id" : 11, "name" : "Protect the ADC", "characters": "Lulu, Lee sin, Kassasin, Kog maw, Nami" },
-    { "id" : 12, "name" : "Cloud 9", "characters": "Rumble, Elise, Fizz, Ashe, Zyra" },
-    { "id" : 13, "name" : "Cloud 9", "characters": "Shen, Zac, Kassadin, Ashe, Zyra" },
-    { "id" : 14, "name" : "SKT S4", "characters": "Jax, Lee sin, Zed, Vayne, Zyra" },
-    { "id" : 15, "name" : "SKT S5", "characters": "Renekton, Elise, Rywe, Sivir, Alistar" },
-    { "id" : 16, "name" : "SKT S6", "characters": "Olaf, Zac, Syndra, Jhin, Nami" },
-    { "id" : 17, "name" : "Sivir comp", "characters": "Gnar, Elise, Ahri, Sivir, Alistar" },
-    { "id" : 18, "name" : "Poke comp", "characters": "Ekko, Gragas, Varus, Corki, Janna" },
-    { "id" : 19, "name" : "Global comp", "characters": "Shen, Nocturn, Karthus, Twitch, Sona" },
-    { "id" : 20, "name" : "La spéciale Narvalou", "characters": "Shen, Nocturn, Karthus, Twitch, Sona" },
-    { "id" : 21, "name" : "Catch Them All", "characters": "Shen, Sejuani, Orianna, Ashe, Morgana" }
+    { "id" : 1, "name" : "La spéciale Narvalou", "characters": "Galio, Jarvan IV, Orianna, Xayah, Rakan" },
+    { "id" : 2, "name" : "Catch Them All", "characters": "Shen, Sejuani, Orianna, Ashe, Morgana" }
 ]

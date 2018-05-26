@@ -1,4 +1,4 @@
-# discord_bot
+# discord_bot v-1.1.6
 
 Bot for league of legends players
 
@@ -16,9 +16,11 @@ Bot for league of legends players
 * **ingame**   :    ingame rules for your team
 * **outgame**  :    outgame rules for your team
 * **ban**      :    team's ban
+* **add ban**  :    add a ban
 * **compos**   :    team's compositions
 * **add compo**:    add a composition for your teammates
 * **train**    :    champion's list to train
+* **add train**:    add a champion to train
 * **help**     :    commands list
 * **doc**      :    link your bot with google docs
 

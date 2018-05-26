@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
+var http = require("http");
+
 const key = require('./data/key.json');
 var compos = require('./data/compos.json');
 var members = require('./data/members.json');
-var http = require("http");
 
 const client = new Discord.Client();
 
@@ -17,6 +18,10 @@ client.on('ready', () => {
 client.on('message', msg => {
     result = ""
     switch(msg.content) {
+        case '!lb ?' :
+        case '!lb help' :
+            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*add ban \n*compos \n*add compo \n*train \n*add train \n*help \n*doc")
+        break;
         case '!lb members':
             for(var i in members){
                 result += members[i].name+' - '+members[i].characters+'\n';
@@ -47,13 +52,79 @@ client.on('message', msg => {
             }
             msg.channel.send(result)
         break;
-        case '!lb ?' :
-        case '!lb help' :
-            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*compos \n*add compo \n*train \n*help \n*doc")
-        break;
         case '!lb doc' :
             msg.channel.send('https://docs.google.com/document/d/'+key.google+'/edit')
         break
+        case '!lb add train':
+            const trainCollector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 10000 });
+            var champion = "";
+            msg.channel.send("!sim - !sam - !zac - !gwe - !val **+** nom_du_champion");
+            trainCollector.on('collect', msg => {
+                if (msg.content.includes("!sim")) {
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[0].train = champion;
+                    msg.channel.send("le pick "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!sam")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[1].train = champion;
+                    msg.channel.send("le pick "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!zac")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[2].train = champion;
+                    msg.channel.send("le pick "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!gwe")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[3].train = champion;
+                    msg.channel.send("le pick "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!val")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[4].train = champion;
+                    msg.channel.send("le pick "+ champion +" a été enregistré");
+
+                } else{
+                    msg.channel.send("Quelque chose a empêché le bon déroulement de la commande");
+                }
+            });
+        break;
+        case '!lb add ban':
+            const banCollector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 10000 });
+            var champion = "";
+            msg.channel.send("!sim - !sam - !zac - !gwe - !val **+** nom_du_champion");
+            banCollector.on('collect', msg => {
+                if (msg.content.includes("!sim")) {
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[0].ban = champion;
+                    msg.channel.send("le ban "+ champion +" a été enregistré");
+                    
+                } else if(msg.content.includes("!sam")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[1].ban = champion;
+                    msg.channel.send("le ban "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!zac")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[2].ban = champion;
+                    msg.channel.send("le ban "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!gwe")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[3].ban = champion;
+                    msg.channel.send("le ban "+ champion +" a été enregistré");
+
+                } else if(msg.content.includes("!val")){
+                    champion = msg.content.substring(4).replace(/\s/g, '');
+                    members[4].ban = champion;
+                    msg.channel.send("le ban "+ champion +" a été enregistré");
+
+                } else{
+                    msg.channel.send("Quelque chose ne s'est pas déroulé comme prévu");
+                }
+            });
+        break;
         case '!lb add compo':
             msg.channel.send("Quelle est le nom de ta nouvelle compo ? **!name 'nom_de_la_compo'**");
             const collector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 40000 });
@@ -94,7 +165,6 @@ client.on('message', msg => {
                             })
                         }
                     })
-                    
                 }
             })
         break;
@@ -102,7 +172,3 @@ client.on('message', msg => {
 });
 
 client.login(key.discord);
-
-
-
-
