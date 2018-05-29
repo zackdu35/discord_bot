@@ -1,4 +1,4 @@
-# discord_bot v-1.1.6
+# discord_bot-1.1.6
 
 Bot for league of legends players
 
