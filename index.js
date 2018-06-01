@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 var http = require("http");
+var opn = require('opn');
+
 
 const key = require('./data/key.json');
 var compos = require('./data/compos.json');
@@ -7,8 +9,8 @@ var members = require('./data/members.json');
 
 const client = new Discord.Client();
 
-var result = ""
-
+var result = "";
+var window = "";
 
 
 client.on('ready', () => {
@@ -20,13 +22,80 @@ client.on('message', msg => {
     switch(msg.content) {
         case '!lb ?' :
         case '!lb help' :
-            msg.channel.send("Liste des commandes :\n\n*members \n*ingame \n*outgame \n*ban \n*add ban \n*compos \n*add compo \n*train \n*add train \n*help \n*doc")
+            msg.channel.send({embed: {
+                color: 15158332,
+                author: {
+                  name: client.user.username,
+                  icon_url: client.user.avatarURL
+                },
+                title: "Commands list",
+                description: "This is the commands you can do.",
+                fields: [{
+                    name: "members",
+                    value: "return the member list"
+                  },
+                  {
+                    name: "ingame",
+                    value: "ingame rules for your team"
+                  },
+                  {
+                    name: "outgame",
+                    value: "outgame rules for your team"
+                  },
+                  {
+                    name: "ban",
+                    value: "team's ban"
+                  },
+                  {
+                    name: "add ban",
+                    value: "add a ban for a player"
+                  },
+                  {
+                    name: "compos",
+                    value: "team's compositions"
+                  },
+                  {
+                    name: "add compo",
+                    value: "add a composition for your teammates"
+                  },
+                  {
+                    name: "train",
+                    value: "champion's list to train"
+                  },
+                  {
+                    name: "add train",
+                    value: "add a champion to train"
+                  },                  
+                  {
+                    name: "live",
+                    value: "Open a brower to see your current match"
+                  },
+                  {
+                    name: "profil",
+                    value: "Open a brower to see your stats"
+                  },
+                  {
+                    name: "doc",
+                    value: "link your bot with google docs"
+                  },
+                  {
+                    name: "help / ?",
+                    value: "commands list"
+                  }
+                ],
+                timestamp: new Date(),
+                footer: {
+                  icon_url: client.user.avatarURL,
+                  text: "© LB-BOT"
+                }
+              }
+            });
         break;
         case '!lb members':
             for(var i in members){
                 result += members[i].name+' - '+members[i].characters+'\n';
             }
-            msg.channel.send(result)
+            msg.channel.send(result);
         break;
         case '!lb ingame':
             msg.channel.send("* Composition de team ( tank , ap , ad , depush )\n* Communication Vocale ( si possible) : position du jungle ennemie, décalage des laners, summoner\n* Vision jungle ennemie : pink wards etc \n-Achat d’une pink ward au premier back \n-Garder les entrées de notre jungle wardées \n-Le jungler garde une pink dans le cas où il veut cheese un objectif \n-support toujour le plus de pink pour mieux dé-wardé \n* Aggression en lane : -information du jg ennemie \n-Gank ou counter Gank \n-débilité de l'ennemie\n* Dragon : - Jg ennemie mort ou topside + pression sur les lanes bot et mid \n* Nash   : - Jg ennemie mort ou botside + une partie de l'équipe ennemie morte , Possibilité de Nash plus risqué si la game est mal partie\n* Focus sur l'adc ou squishy feed \n* Pas de call risqué si on est devant \n* finir la game le plus vite possible ( ne pas troll si on est tous feed ) ")
@@ -53,8 +122,30 @@ client.on('message', msg => {
             msg.channel.send(result)
         break;
         case '!lb doc' :
-            msg.channel.send('https://docs.google.com/document/d/'+key.google+'/edit')
-        break
+            msg.channel.send('https://docs.google.com/document/d/'+key.google+'/edit');
+        break;
+        case 'lb rm compo' :
+            msg.channel.send("Saisir l'id de la compo à supprimer");
+            
+        break;
+        case '!lb live':
+            const liveCollector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 7000 });
+            msg.channel.send("ton pseudo euw : ton_pseudo");
+            liveCollector.on('collect', msg => {
+                if(msg.content!=null){
+                    opn('https://porofessor.gg/fr/live/euw/'+msg.content.trim());
+                }
+            });
+        break;
+        case '!lb profil': 
+            const profilCollector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 7000 });
+            msg.channel.send("ton pseudo euw : ton_pseudo");
+            profilCollector.on('collect', msg => {
+                if(msg.content!=null){
+                    opn('https://www.leagueofgraphs.com/fr/summoner/euw/'+msg.content.trim());
+                }
+            });
+        break;
         case '!lb add train':
             const trainCollector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 10000 });
             var champion = "";
